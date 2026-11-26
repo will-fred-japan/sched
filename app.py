@@ -98,4 +98,25 @@ def index():
     for target in TARGETS:
         all_events.extend(fetch_target_events(target, ym_str))
 
-    all_events.sort(key=lambda
+    all_events.sort(key=lambda x: x.get("date", ""))
+
+    current_date = None
+    day_idx = 0
+    for event in all_events:
+        event_date = event.get("date", "")
+        if event_date != current_date:
+            if current_date is not None:
+                day_idx += 1
+            current_date = event_date
+        event["day_idx"] = day_idx
+
+    return render_template(
+        "index.html",
+        events=all_events,
+        now=datetime.now().strftime("%H:%M:%S"),
+        nav=nav,
+    )
+
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
