@@ -1,5 +1,4 @@
 # File: app.py
-# File: app.py
 
 import base64
 from datetime import datetime, timedelta
@@ -26,13 +25,12 @@ ICON_512_PNG = base64.b64decode(ICON_512_PNG_B64)
 @app.route("/icon-192.png")
 def icon_192():
     """Serves the 192x192 PWA icon."""
-    return Response(ICON_192_PNG, mimetype="image/png")
-
+    return Response(FAVICON_PNG_B64, mimetype="image/png")
 
 @app.route("/icon-512.png")
 def icon_512():
     """Serves the 512x512 PWA icon."""
-    return Response(ICON_512_PNG, mimetype="image/png")
+    return Response(FAVICON_PNG_B64, mimetype="image/png")
 
 @app.route("/favicon.ico")
 def favicon():
