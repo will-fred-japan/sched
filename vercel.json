@@ -1,5 +1,4 @@
 {
-  "// File": "vercel.json",
   "rewrites": [
     {
       "source": "/(.*)",
