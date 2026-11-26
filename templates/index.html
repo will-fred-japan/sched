@@ -1,0 +1,54 @@
+<!-- File: templates/index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>スケジュール一覧</title>
+    <!-- Base64 PNG Site Favicon -->
+    <!-- High-visibility calendar icon with dark green background -->
+	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231b4d3e'/><text x='50%' y='65%' font-size='60' text-anchor='middle' fill='white'>📅</text></svg>">
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; background: #121212; color: #e0e0e0; margin: 0; padding: 24px; }
+        .container { max-width: 750px; margin: 0 auto; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 12px; margin-bottom: 16px; }
+        h1 { font-size: 22px; margin: 0; }
+        .nav-group { display: flex; align-items: center; gap: 8px; }
+        .nav-btn { background: #2a2a2a; color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid #444; }
+        .nav-btn:hover { background: #3a3a3a; }
+        .current-month { font-weight: bold; font-size: 16px; color: #4dabf7; margin: 0 6px; }
+        .subtitle { font-size: 12px; color: #777; margin-bottom: 20px; }
+        .card { border: 1px solid #3b3b3b; border-radius: 6px; padding: 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+        .card-even { background: #181818; }
+        .card-odd { background: #2d333b; }
+        .info { flex: 1; }
+        .info strong { color: #fff; font-size: 15px; }
+        .details { font-size: 13px; color: #999; margin-top: 4px; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; background: #1b4d3e; color: #81c784; white-space: nowrap; flex-shrink: 0; }
+        .badge-music { background: #4a2545; color: #f08c00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>スケジュール一覧</h1>
+            <div class="nav-group">
+                <a href="/?month={{ nav.prev }}" class="nav-btn">&laquo; 前月</a>
+                <span class="current-month">{{ nav.display }}</span>
+                <a href="/?month={{ nav.next }}" class="nav-btn">翌月 &raquo;</a>
+            </div>
+        </div>
+        <div class="subtitle">最終更新: {{ now }}</div>
+        {% for event in events %}
+        <div class="card {% if event.day_idx % 2 == 0 %}card-even{% else %}card-odd{% endif %}">
+            <div class="info">
+                <strong>[{{ event.entity }}] {{ event.title }}</strong>
+                <div class="details">{{ event.date }} &bull; {{ event.venue }}</div>
+            </div>
+            <span class="badge {% if event.category == '音楽' %}badge-music{% endif %}">{{ event.category }}</span>
+        </div>
+        {% else %}
+        <p style="color: #ff6b6b;">{{ nav.display }}の予定は見つかりませんでした。</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
