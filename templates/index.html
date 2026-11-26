@@ -3,28 +3,41 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>スケジュール一覧</title>
     <!-- Base64 PNG Site Favicon -->
     <!-- High-visibility calendar icon with dark green background -->
 	<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231b4d3e'/><text x='50%' y='65%' font-size='60' text-anchor='middle' fill='white'>📅</text></svg>">
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; background: #121212; color: #e0e0e0; margin: 0; padding: 24px; }
+        body { font-family: system-ui, -apple-system, sans-serif; background: #121212; color: #e0e0e0; margin: 0; padding: 24px; font-size: 16px; }
         .container { max-width: 750px; margin: 0 auto; }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 12px; margin-bottom: 16px; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 12px; margin-bottom: 16px; gap: 12px; }
         h1 { font-size: 22px; margin: 0; }
         .nav-group { display: flex; align-items: center; gap: 8px; }
         .nav-btn { background: #2a2a2a; color: #fff; text-decoration: none; padding: 6px 12px; border-radius: 4px; font-size: 13px; border: 1px solid #444; }
         .nav-btn:hover { background: #3a3a3a; }
         .current-month { font-weight: bold; font-size: 16px; color: #4dabf7; margin: 0 6px; }
-        .subtitle { font-size: 12px; color: #777; margin-bottom: 20px; }
+        .subtitle { font-size: 13px; color: #888; margin-bottom: 20px; }
         .card { border: 1px solid #3b3b3b; border-radius: 6px; padding: 14px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
         .card-even { background: #181818; }
         .card-odd { background: #2d333b; }
         .info { flex: 1; }
-        .info strong { color: #fff; font-size: 15px; }
-        .details { font-size: 13px; color: #999; margin-top: 4px; }
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; background: #1b4d3e; color: #81c784; white-space: nowrap; flex-shrink: 0; }
+        .info strong { color: #fff; font-size: 16px; line-height: 1.4; display: block; }
+        .details { font-size: 14px; color: #aaa; margin-top: 4px; line-height: 1.4; }
+        .badge { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; background: #1b4d3e; color: #81c784; white-space: nowrap; flex-shrink: 0; }
         .badge-music { background: #4a2545; color: #f08c00; }
+
+        @media (max-width: 600px) {
+            body { padding: 14px; font-size: 17px; }
+            .header { flex-direction: column; align-items: flex-start; }
+            h1 { font-size: 24px; }
+            .nav-btn { padding: 8px 14px; font-size: 15px; }
+            .current-month { font-size: 17px; }
+            .card { padding: 16px; align-items: flex-start; }
+            .info strong { font-size: 17px; }
+            .details { font-size: 15px; margin-top: 6px; }
+            .badge { font-size: 13px; padding: 5px 9px; }
+        }
     </style>
 </head>
 <body>
@@ -52,3 +65,9 @@
     </div>
 </body>
 </html>
+```
+
+<ElicitationsGroup message="Need any adjustments after updating templates/index.html?">
+  <Elicitation label="Make text even larger" query="Can you make the phone text sizes in templates/index.html a bit larger for easier reading?"/>
+  <Elicitation label="Add PWA manifest next" query="Now that the mobile text sizing is set, how do I add the manifest and installable app setup?"/>
+  </ElicitationsGroup>
