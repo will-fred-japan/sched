@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#121212">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon-192.png">
     <title>スケジュール一覧</title>
     <!-- Base64 PNG Site Favicon -->
     <!-- High-visibility calendar icon with dark green background -->
@@ -63,6 +66,15 @@
         <p style="color: #ff6b6b;">{{ nav.display }}の予定は見つかりませんでした。</p>
         {% endfor %}
     </div>
+	<script>
+	        if ("serviceWorker" in navigator) {
+	            window.addEventListener("load", () => {
+	                navigator.serviceWorker.register("/sw.js").catch((err) => {
+	                    console.error("SW registration failed:", err);
+	                });
+	            });
+	        }
+	</script>
 </body>
 </html>
 ```
