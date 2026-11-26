@@ -13,30 +13,20 @@ app = Flask(__name__)
 FAVICON_PNG_B64 = "iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAFUlEQVR42mNk+M9Qz0AEYB41ACMIABK3EACp57yLAAAAAElFTkSuQmCC"
 FAVICON_PNG = base64.b64decode(FAVICON_PNG_B64)
 
-# File: app.py
-
-ICON_192_PNG_B64 = "<paste_192x192_base64_string_here>"
-ICON_512_PNG_B64 = "<paste_512x512_base64_string_here>"
-
-ICON_192_PNG = base64.b64decode(ICON_192_PNG_B64)
-ICON_512_PNG = base64.b64decode(ICON_512_PNG_B64)
-
-
 @app.route("/icon-192.png")
 def icon_192():
     """Serves the 192x192 PWA icon."""
-    return Response(FAVICON_PNG_B64, mimetype="image/png")
+    return Response(FAVICON_PNG, mimetype="image/png")
 
 @app.route("/icon-512.png")
 def icon_512():
     """Serves the 512x512 PWA icon."""
-    return Response(FAVICON_PNG_B64, mimetype="image/png")
+    return Response(FAVICON_PNG, mimetype="image/png")
 
 @app.route("/favicon.ico")
 def favicon():
     """Serves the favicon directly to satisfy browser root requests."""
     return Response(FAVICON_PNG, mimetype="image/png")
-
 
 def get_month_str():
     """Returns YYYYMM string from request args, default to current month."""
