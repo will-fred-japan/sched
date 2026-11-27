@@ -83,7 +83,7 @@
                 
                 // Generate list of months to prefetch (nearest first)
                 const monthsToFetch = [];
-                for (let i = 1; i <= 6; i++) {
+                for (let i = 1; i <= 3; i++) {
                     // Next months
                     let dNext = new Date(year, month - 1 + i, 1);
                     monthsToFetch.push(dNext.getFullYear().toString() + (dNext.getMonth() + 1).toString().padStart(2, '0'));
