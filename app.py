@@ -138,7 +138,7 @@ def index():
         nav=nav,
     ))
     # Cache the HTML page at the Edge/CDN for 5 minutes
-    response.headers["Cache-Control"] = "public, s-maxage=300, stale-while-revalidate=60"
+    response.headers["Cache-Control"] = "public, s-maxage=600, stale-while-revalidate=120"
     return response
 
 
@@ -153,7 +153,7 @@ def api_prefetch():
     
     response = jsonify({"month": ym_str, "count": len(events)})
     # Cache API responses aggressively so subsequent visits are instant
-    response.headers["Cache-Control"] = "public, s-maxage=300, stale-while-revalidate=60"
+    response.headers["Cache-Control"] = "public, s-maxage=600, stale-while-revalidate=120"
     return response
 
 
