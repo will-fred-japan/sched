@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
 import importlib
 from concurrent.futures import ThreadPoolExecutor
-from flask import Flask, Response, render_template, request, jsonify
+from flask import Flask, Response, render_template, request, jsonify, make_response
 import requests
 from config import HEADERS, TARGETS
 
